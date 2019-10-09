@@ -17,21 +17,38 @@ namespace Sitecore.Support.Commerce.Engine.Connect.Events
 {
     public class IndexingCompletedEventHandler : Sitecore.Commerce.Engine.Connect.Events.IndexingCompletedEventHandler
     {
+        private int _cacheCleanThreshold = 10000;
+
+        public IndexingCompletedEventHandler()
+        {
+            int threshold;
+            if (int.TryParse(Sitecore.Configuration.Settings.GetSetting("IndexingCompletedCacheCleaningThreshold", "10000"), out threshold))
+            {
+                _cacheCleanThreshold = threshold;
+            }
+        }
+
         public override void OnIndexingCompleted(object sender, EventArgs e)
         {
+            bool reloadMappings = false;
+            bool cleanAllCaches = false;
+
             IndexingCompletedEventArgs indexingCompletedEventArgs;
             if (e == null || (indexingCompletedEventArgs = (e as IndexingCompletedEventArgs)) == null)
             {
                 return;
             }
+
             Database database = Factory.GetDatabase(indexingCompletedEventArgs.DatabaseName, assert: false);
             if (database == null)
             {
                 return;
             }
-            bool flag = false;
+
             Log.Info("OnIndexingCompleted - Started for '" + database.Name + "'.", this);
-            if (indexingCompletedEventArgs.SitecoreIds.Length <= 20)
+
+            // clean caches partially based on configured threshold
+            if (indexingCompletedEventArgs.SitecoreIds.Length <= _cacheCleanThreshold)
             {
                 Log.Info("OnIndexingCompleted - Performing incremental cache updates.", this);
                 string[] sitecoreIds = indexingCompletedEventArgs.SitecoreIds;
@@ -42,6 +59,7 @@ namespace Sitecore.Support.Commerce.Engine.Connect.Events
                     {
                         continue;
                     }
+
                     Item item = database.GetItem(result);
                     if (item != null)
                     {
@@ -67,19 +85,23 @@ namespace Sitecore.Support.Commerce.Engine.Connect.Events
                     else
                     {
                         Log.Info(string.Format("{0} - Found new item '{1}'.", "OnIndexingCompleted", result), this);
-                        flag = true;
+                        reloadMappings = true;
                     }
                 }
             }
             else
             {
-                Log.Info("OnIndexingCompleted - Performing full cache refresh.", this);
-                flag = true;
+                cleanAllCaches = true;
             }
-            if (flag || IsStandaloneEnvironment())
+
+            if (cleanAllCaches)
             {
-                Log.Info("OnIndexingCompleted - Clear caches.", this);
+                Log.Info($"OnIndexingCompleted - Performing full cache refresh. Number of changes: '{indexingCompletedEventArgs.SitecoreIds.Length}'", this);
                 CacheManager.ClearAllCaches();
+            }
+
+            if (reloadMappings)
+            {
                 Log.Info("OnIndexingCompleted - Updating mapping entries.", this);
                 new CatalogRepository().UpdateMappingEntries(DateTime.UtcNow);
             }
