@@ -108,16 +108,5 @@ namespace Sitecore.Support.Commerce.Engine.Connect.Events
                 return result;
             }
         }
-
-        private bool IsStandaloneEnvironment()
-        {
-            string text = ConfigurationManager.AppSettings["role:define"];
-            if (!string.IsNullOrEmpty(text))
-            {
-                return text.Equals(SitecoreRole.Standalone.Name, StringComparison.OrdinalIgnoreCase);
-            }
-
-            return false;
-        }
     }
 }
