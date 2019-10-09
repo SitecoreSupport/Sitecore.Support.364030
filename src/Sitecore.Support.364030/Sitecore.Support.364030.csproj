@@ -87,51 +87,13 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Analytics, Version=11.18.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Analytics.NoReferences.9.0.180604\lib\NET462\Sitecore.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Client, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Client.NoReferences.9.0.180604\lib\NET462\Sitecore.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Commerce.Connect.Collection.Model, Version=11.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Commerce.Connect.Core.11.4.15\lib\net462\Sitecore.Commerce.Connect.Collection.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Commerce.Connect.Core, Version=11.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Commerce.Connect.Core.11.4.15\lib\net462\Sitecore.Commerce.Connect.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Commerce.Connect.Remote, Version=11.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Commerce.Connect.Core.11.4.15\lib\net462\Sitecore.Commerce.Connect.Remote.dll</HintPath>
-    </Reference>
     <Reference Include="Sitecore.Commerce.Engine.Connect, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\COM.Sitecore.Commerce.Engine.Connect.9.0.3\lib\Sitecore.Commerce.Engine.Connect.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.ContentSearch, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.ContentSearch.NoReferences.9.0.180604\lib\NET462\Sitecore.ContentSearch.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.ContentSearch.Linq, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.ContentSearch.Linq.NoReferences.9.0.180604\lib\NET462\Sitecore.ContentSearch.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.180604\lib\NET462\Sitecore.Kernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Logging, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Logging.NoReferences.9.0.180604\lib\NET462\Sitecore.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Update, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Update.NoReferences.9.0.180604\lib\NET462\Sitecore.Update.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.XA.Foundation.Search, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.XA.Foundation.Search.3.7.1\lib\NET462\Sitecore.XA.Foundation.Search.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.XA.Foundation.Search.Providers.Azure, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.XA.Foundation.Search.Providers.Azure.3.7.1\lib\NET462\Sitecore.XA.Foundation.Search.Providers.Azure.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.XA.Foundation.Search.Providers.Solr, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.XA.Foundation.Search.Providers.Solr.3.7.1\lib\NET462\Sitecore.XA.Foundation.Search.Providers.Solr.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Zip, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Zip.NoReferences.9.0.180604\lib\NET462\Sitecore.Zip.dll</HintPath>
+      <HintPath>..\packages\SC.Sitecore.Kernel.9.0.2\lib\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.NonGeneric, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
