@@ -31,7 +31,6 @@ namespace Sitecore.Support.Commerce.Engine.Connect.Events
         public override void OnIndexingCompleted(object sender, EventArgs e)
         {
             bool reloadMappings = false;
-            bool cleanAllCaches = false;
 
             IndexingCompletedEventArgs indexingCompletedEventArgs;
             if (e == null || (indexingCompletedEventArgs = (e as IndexingCompletedEventArgs)) == null)
@@ -88,20 +87,18 @@ namespace Sitecore.Support.Commerce.Engine.Connect.Events
                         reloadMappings = true;
                     }
                 }
+                
+                if (reloadMappings)
+                {
+                    Log.Info("OnIndexingCompleted - Updating mapping entries.", this);
+                    new CatalogRepository().UpdateMappingEntries(DateTime.UtcNow);
+                }
             }
             else
             {
-                cleanAllCaches = true;
-            }
-
-            if (cleanAllCaches)
-            {
                 Log.Info($"OnIndexingCompleted - Performing full cache refresh. Number of changes: '{indexingCompletedEventArgs.SitecoreIds.Length}'", this);
                 CacheManager.ClearAllCaches();
-            }
-
-            if (reloadMappings)
-            {
+                
                 Log.Info("OnIndexingCompleted - Updating mapping entries.", this);
                 new CatalogRepository().UpdateMappingEntries(DateTime.UtcNow);
             }
